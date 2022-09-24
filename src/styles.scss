@@ -2,3 +2,20 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import "../node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css";
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+// body {
+//   background-image: url("./assets/tic-tac-toe-background.jpeg");
+//   object-fit: contain;
+//   background-size: contain;
+//   width: 100%;
+//   height: auto;
+// }

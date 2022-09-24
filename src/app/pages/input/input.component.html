@@ -1,0 +1,24 @@
+<div class="flex flex-col items-center justify-center">
+  <h1 class="title">ENTER NUMBER OF BOX</h1>
+  <form class="w-[80%]" [formGroup]="number" (ngSubmit)="onSubmit(number)">
+    <input
+      placeholder="Enter number"
+      class="input body-2 semibold w-full"
+      formControlName="number"
+      [value]=""
+    />
+  </form>
+
+  <button
+    (click)="onSubmit(number)"
+    class="mt-[40px] w-[103px] h-[36px] bg-[#673ab7] text-[#fff] rounded-lg"
+    [disabled]="number.invalid"
+    [ngClass]="
+      number.invalid
+        ? 'bg-[#F2F2F2] text-[#ccc] cursor-not-allowed'
+        : 'bg-[#673ab7]'
+    "
+  >
+    Enter Game
+  </button>
+</div>
