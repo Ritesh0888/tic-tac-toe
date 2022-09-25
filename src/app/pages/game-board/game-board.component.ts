@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { TicTacHomeService } from '../tic-tac-home/tic-tac-home.service';
+import { TicTacHomeService } from 'src/app/common/services/Home/home.service';
 
 @Component({
   selector: 'app-game-board',
@@ -20,9 +20,18 @@ export class GameBoardComponent implements OnInit {
 
   constructor(private ticTacHomeService: TicTacHomeService) {
     this.boardSize = ticTacHomeService.number;
+    this.getTwoDimensionArray();
+    // this.setGridStyle(this.boardSize);
   }
 
   ngOnInit() {
+    let grid: any = document.getElementById('container');
+    grid.style =
+      ' grid-template-columns: repeat(3, minmax(0, 100px)), grid-template-rows: repeat(3, minmax(0, 100px))';
+    console.log(grid);
+  }
+
+  getTwoDimensionArray() {
     for (let i = 0; i < this.boardSize!; i++) {
       let data: any = [];
       for (let j = 0; j < this.boardSize!; j++) {
@@ -32,10 +41,11 @@ export class GameBoardComponent implements OnInit {
       data.forEach((el: any) => {
         this.dataclone.push(el);
       });
-      console.log(data);
 
       this.twoDimensionalArray.push(data);
     }
     console.log(this.twoDimensionalArray);
   }
+
+  // setGridStyle(number: any) {}
 }

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { TicTacHomeService } from '../tic-tac-home/tic-tac-home.service';
+import { TicTacHomeService } from 'src/app/common/services/Home/home.service';
 
 @Component({
   selector: 'app-input',
