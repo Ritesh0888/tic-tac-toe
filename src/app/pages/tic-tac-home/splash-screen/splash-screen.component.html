@@ -1,11 +1,21 @@
-<div class="app-splash-screen fixed flex justify-center items-center">
+<div
+  class="app-splash-screen fixed flex justify-center items-center"
+  [ngStyle]="{
+    left: windowWidth
+  }"
+  *ngIf="showSplash"
+>
   <div
-    class="app-splash-scrren-inner flex flex-col justify-center items-center"
+    class="app-splash-screen-inner flex flex-col justify-center items-center"
   >
-    <div class="app-logo mat-"></div>
-    <div class="app-label">Tic-Tac-Toe</div>
-    <div
-      class="app-loader bg-no-repeat max-w-max bg-center bg-contain w-10/12 h-3/4 mt-20"
-    ></div>
+    <div class="app-logo">
+      <img src="https://img.icons8.com/ultraviolet/80/000000/tic-tac-toe.png" />
+    </div>
+    <div class="app-label mt-5">
+      <span class="text-[#c51162]">Tic - </span>
+      <span class="text-[#2962ff]">Tac - </span>
+      <span class="text-[#444]">Toe</span>
+    </div>
+    <div class="app-loader"></div>
   </div>
 </div>
