@@ -21,16 +21,18 @@ export class GameBoardComponent implements OnInit {
   constructor(private ticTacHomeService: TicTacHomeService) {
     this.boardSize = ticTacHomeService.number;
     this.getTwoDimensionArray();
-    // this.setGridStyle(this.boardSize);
   }
 
   ngOnInit() {
-    let grid: any = document.getElementById('container');
-    grid.style =
-      ' grid-template-columns: repeat(3, minmax(0, 100px)), grid-template-rows: repeat(3, minmax(0, 100px))';
-    console.log(grid);
+    let grid: any = document.getElementById('box');
+    grid.style = ` grid-template-columns: repeat(${this.boardSize}, minmax(100px, 100px)`;
+    grid.style.gridTemplateRows = `repeat(${this.boardSize}, minmax(100px, 100px)`;
+
+    let color: any = document.getElementById('id');
+    console.log(color);
   }
 
+  // Get two dimention array
   getTwoDimensionArray() {
     for (let i = 0; i < this.boardSize!; i++) {
       let data: any = [];
@@ -44,8 +46,10 @@ export class GameBoardComponent implements OnInit {
 
       this.twoDimensionalArray.push(data);
     }
-    console.log(this.twoDimensionalArray);
   }
 
-  // setGridStyle(number: any) {}
+  playerMoveShow(index: number) {
+    let color: any = document.getElementById('id');
+    console.log(color);
+  }
 }

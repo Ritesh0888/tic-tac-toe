@@ -1,8 +1,11 @@
-<div
-  id="container"
-  class="h-[300px] p-[10px] place-content-center container mt-[50px] gap-[10px]"
->
-  <ng-container *ngFor="let item of dataclone">
-    <div class="flex justify-center items-center content-1">{{ item }}</div>
+<div id="box" class="p-[10px] box mt-[50px] gap-[10px]">
+  <ng-container *ngFor="let item of dataclone; let index = index">
+    <div
+      id="color"
+      (click)="playerMoveShow(index + 1)"
+      class="flex justify-center items-center content-1"
+    >
+      {{ item }}
+    </div>
   </ng-container>
 </div>
