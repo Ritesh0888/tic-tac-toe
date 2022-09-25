@@ -7,9 +7,10 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { ReactiveFormsModule } from '@angular/forms';
 import { InputComponent } from '../input/input.component';
-
+import { MatIconModule } from '@angular/material/icon';
+import { SplashScreenComponent } from './splash-screen/splash-screen.component';
 @NgModule({
-  declarations: [TicTacHomeComponent, InputComponent],
+  declarations: [TicTacHomeComponent, InputComponent, SplashScreenComponent],
   imports: [
     BrowserModule,
     TicTacCommonModule,
@@ -17,7 +18,8 @@ import { InputComponent } from '../input/input.component';
     MatInputModule,
     MatFormFieldModule,
     ReactiveFormsModule,
+    MatIconModule,
   ],
-  exports: [TicTacHomeComponent],
+  exports: [TicTacHomeComponent, SplashScreenComponent],
 })
 export class TicTacHomeModule {}

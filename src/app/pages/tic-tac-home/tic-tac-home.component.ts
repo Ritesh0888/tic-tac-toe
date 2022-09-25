@@ -7,6 +7,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./tic-tac-home.component.css'],
 })
 export class TicTacHomeComponent implements OnInit {
+  currentPlayer: string = '';
+  winner: string = '';
   constructor(private router: Router) {}
 
   ngOnInit() {}
