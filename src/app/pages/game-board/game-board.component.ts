@@ -26,18 +26,20 @@ export class GameBoardComponent implements OnInit {
 
   ngOnInit() {
     let grid: any = document.getElementById('container');
-    grid.style =
-      ' grid-template-columns: repeat(3, minmax(0, 100px)), grid-template-rows: repeat(3, minmax(0, 100px))';
+    grid.style = ' grid-template-columns: repeat(3, minmax(0, 100px))';
     console.log(grid);
   }
 
   getTwoDimensionArray() {
     for (let i = 0; i < this.boardSize!; i++) {
-      let data: any = [];
+      let data: Array<number> = [];
       for (let j = 0; j < this.boardSize!; j++) {
         data.push(this.count);
         this.count++;
+        console.log('inside forst loop', data);
       }
+      console.log('outside first loop', data);
+
       data.forEach((el: any) => {
         this.dataclone.push(el);
       });

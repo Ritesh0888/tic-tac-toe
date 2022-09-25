@@ -17,7 +17,7 @@ export class InputComponent implements OnInit {
   number = new FormGroup({
     number: new FormControl('', [
       Validators.required,
-      Validators.pattern('^[0-9]*$'),
+      Validators.pattern(/^[0-9]\d*$/),
     ]),
   });
   ngOnInit() {}

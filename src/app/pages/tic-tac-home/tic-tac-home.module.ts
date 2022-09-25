@@ -9,19 +9,18 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { InputComponent } from '../input/input.component';
 import { GameBoardComponent } from '../game-board/game-board.component';
 import { MatIconModule } from '@angular/material/icon';
-import { SplashScreenComponent } from './splash-screen/splash-screen.component';
 import { CommonModule } from '@angular/common';
 @NgModule({
-  declarations: [TicTacHomeComponent, InputComponent,GameBoardComponent,  SplashScreenComponent],
+  declarations: [TicTacHomeComponent, InputComponent, GameBoardComponent],
   imports: [
     CommonModule,
-    TicTacCommonModule,
     MatSliderModule,
     MatInputModule,
     MatFormFieldModule,
     ReactiveFormsModule,
     MatIconModule,
+    TicTacCommonModule,
   ],
-  exports: [TicTacHomeComponent, SplashScreenComponent, GameBoardComponent],
+  exports: [TicTacHomeComponent, GameBoardComponent],
 })
 export class TicTacHomeModule {}
