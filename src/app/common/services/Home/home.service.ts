@@ -1,9 +1,18 @@
 import { Injectable } from '@angular/core';
+import { observable } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
-export class HomeService {
+export class TicTacHomeService {
+  number?: number;
+  constructor() {}
 
-  constructor() { }
+  setNumber(number: number) {
+    this.number = number;
+  }
+
+  // getNumber() {
+  //   return this.number;
+  // }
 }
