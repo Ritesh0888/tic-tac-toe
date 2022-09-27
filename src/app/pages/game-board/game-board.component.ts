@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TicTacHomeService } from 'src/app/common/services/Home/home.service';
+import { LocalStorageService } from 'src/app/common/services/localStorage/local-storage.service';
 
 @Component({
   selector: 'app-game-board',
@@ -17,10 +18,15 @@ export class GameBoardComponent implements OnInit {
   winner: boolean = false;
 
   lastIndex?: number;
+  lastColor?: string = 'red';
   activePlayer: string = 'X';
 
-  constructor(private ticTacHomeService: TicTacHomeService) {
-    this.boardSize = ticTacHomeService.number;
+  constructor(
+    private ticTacHomeService: TicTacHomeService,
+    private localStorageService: LocalStorageService
+  ) {
+    this.boardSize = JSON.parse(localStorageService.getNumber() || '');
+
     this.getTwoDimensionArray();
   }
 
@@ -39,12 +45,32 @@ export class GameBoardComponent implements OnInit {
         this.count++;
       }
       data.forEach((el: any) => {
-        this.dataclone.push(el);
+        this.dataclone.push('');
       });
 
       this.twoDimensionalArray.push(data);
     }
   }
 
-  playerMoveShow(index: number) {}
+  playerMoveShow(index: number) {
+    if (this.lastIndex != index && this.dataclone.includes('')) {
+      this.lastIndex = index;
+      if (this.dataclone[index] != '') {
+        console.log();
+      } else {
+        if (!this.dataclone.includes('X')) {
+          this.dataclone[index] = this.activePlayer;
+        } else if (this.activePlayer === 'X') {
+          this.activePlayer = '0';
+          this.dataclone[index] = this.activePlayer;
+        } else if (this.activePlayer === '0') {
+          this.activePlayer = 'X';
+          this.dataclone[index] = this.activePlayer;
+        }
+      }
+    }
+    this.changeBgColor();
+  }
+
+  changeBgColor() {}
 }

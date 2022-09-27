@@ -1,9 +1,9 @@
 <div id="box" class="p-[10px] box mt-[50px] gap-[10px]">
   <ng-container *ngFor="let item of dataclone; let index = index">
     <div
-      id="color"
+      *ngIf="activePlayer"
       (click)="playerMoveShow(index)"
-      class="flex justify-center items-center content-1"
+      class="flex justify-center items-center content-1 bg-purple-400"
     >
       {{ item }}
     </div>
