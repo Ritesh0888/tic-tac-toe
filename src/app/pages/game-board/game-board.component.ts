@@ -11,12 +11,13 @@ export class GameBoardComponent implements OnInit {
   dataclone: any = [];
   count = 1;
   boardSize?: number;
-  activePlayer: string = 'X';
   turnCount?: 0;
   isGameRunning: boolean = false;
   isGameOver: boolean = false;
   winner: boolean = false;
-  COLORS = ['#FE9', '#9AF', '#F9A', '#AFA', '#FA7'];
+
+  lastIndex?: number;
+  activePlayer: string = 'X';
 
   constructor(private ticTacHomeService: TicTacHomeService) {
     this.boardSize = ticTacHomeService.number;
@@ -27,9 +28,6 @@ export class GameBoardComponent implements OnInit {
     let grid: any = document.getElementById('box');
     grid.style = ` grid-template-columns: repeat(${this.boardSize}, minmax(100px, 100px)`;
     grid.style.gridTemplateRows = `repeat(${this.boardSize}, minmax(100px, 100px)`;
-
-    let color: any = document.getElementById('id');
-    console.log(color);
   }
 
   // Get two dimention array
@@ -48,8 +46,5 @@ export class GameBoardComponent implements OnInit {
     }
   }
 
-  playerMoveShow(index: number) {
-    let color: any = document.getElementById('id');
-    console.log(color);
-  }
+  playerMoveShow(index: number) {}
 }
