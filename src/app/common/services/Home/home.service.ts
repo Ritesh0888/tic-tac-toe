@@ -13,6 +13,10 @@ export class TicTacHomeService {
     this.localStorageService.setNumber(number);
   }
 
+  setPlayerMove(playerMove: string) {
+    this.localStorageService.setPlayerMove(playerMove);
+  }
+
   // getNumber() {
   //   return this.number;
   // }

@@ -20,20 +20,25 @@ export class GameBoardComponent implements OnInit {
   lastIndex?: number;
   lastColor?: string = 'red';
   activePlayer: string = 'X';
+  playerMove: any;
 
   constructor(
-    private ticTacHomeService: TicTacHomeService,
-    private localStorageService: LocalStorageService
+    public localStorageService: LocalStorageService,
+    public ticTacHomeService: TicTacHomeService
   ) {
     this.boardSize = JSON.parse(localStorageService.getNumber() || '');
-
+    this.playerMove = localStorageService.getPlayerMove();
     this.getTwoDimensionArray();
+    // this.dataclone = JSON.parse(this.playerMove);
   }
 
   ngOnInit() {
     let grid: any = document.getElementById('box');
     grid.style = ` grid-template-columns: repeat(${this.boardSize}, minmax(100px, 100px)`;
     grid.style.gridTemplateRows = `repeat(${this.boardSize}, minmax(100px, 100px)`;
+
+    console.log(this.dataclone);
+    console.log(JSON.parse(this.playerMove));
   }
 
   // Get two dimention array
@@ -68,6 +73,7 @@ export class GameBoardComponent implements OnInit {
           this.dataclone[index] = this.activePlayer;
         }
       }
+      this.ticTacHomeService.setPlayerMove(this.activePlayer);
     }
     this.changeBgColor();
   }
