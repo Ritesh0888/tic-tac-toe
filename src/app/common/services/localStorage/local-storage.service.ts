@@ -4,16 +4,16 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class LocalStorageService {
-  playerMoves?: any = [];
+  playerMoves: any;
   constructor() {}
 
   setNumber(number: any) {
     localStorage.setItem('INPUT_NUMBER', number);
   }
 
-  setPlayerMove(playerMove: string) {
+  setPlayerMove(cloneData: any) {
+    this.playerMoves = cloneData;
     localStorage.setItem('PLAYER_MOVE', JSON.stringify(this.playerMoves));
-    this.playerMoves?.push(playerMove);
   }
 
   getNumber() {

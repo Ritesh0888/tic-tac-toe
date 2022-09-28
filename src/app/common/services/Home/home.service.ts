@@ -13,8 +13,8 @@ export class TicTacHomeService {
     this.localStorageService.setNumber(number);
   }
 
-  setPlayerMove(playerMove: string) {
-    this.localStorageService.setPlayerMove(playerMove);
+  setPlayerMove(cloneData: any) {
+    this.localStorageService.setPlayerMove(cloneData);
   }
 
   // getNumber() {

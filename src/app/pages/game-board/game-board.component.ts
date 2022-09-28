@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { TicTacHomeService } from 'src/app/common/services/Home/home.service';
 import { LocalStorageService } from 'src/app/common/services/localStorage/local-storage.service';
 
@@ -29,7 +29,6 @@ export class GameBoardComponent implements OnInit {
     this.boardSize = JSON.parse(localStorageService.getNumber() || '');
     this.playerMove = localStorageService.getPlayerMove();
     this.getTwoDimensionArray();
-    // this.dataclone = JSON.parse(this.playerMove);
   }
 
   ngOnInit() {
@@ -55,6 +54,9 @@ export class GameBoardComponent implements OnInit {
 
       this.twoDimensionalArray.push(data);
     }
+    if (JSON.parse(this.playerMove)) {
+      this.dataclone = JSON.parse(this.playerMove);
+    }
   }
 
   playerMoveShow(index: number) {
@@ -73,7 +75,7 @@ export class GameBoardComponent implements OnInit {
           this.dataclone[index] = this.activePlayer;
         }
       }
-      this.ticTacHomeService.setPlayerMove(this.activePlayer);
+      this.ticTacHomeService.setPlayerMove(this.dataclone);
     }
     this.changeBgColor();
   }
