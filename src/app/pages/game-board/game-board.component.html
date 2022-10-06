@@ -1,3 +1,11 @@
+<h1 *ngIf="activePlayer == 'X'">{{ "X" + " " + "Player Turn's" }}</h1>
+<h1 *ngIf="activePlayer != 'X'">
+  {{
+    activePlayer == "X"
+      ? "O" + " " + "Player Turn's"
+      : "X" + " " + "Player Turn's"
+  }}
+</h1>
 <div id="box" class="p-[10px] box mt-[50px] gap-[10px]">
   <ng-container *ngFor="let item of dataclone; let index = index">
     <div
@@ -9,3 +17,15 @@
     </div>
   </ng-container>
 </div>
+<button
+  class="button mr-4 bg-red-500 text-white p-3 rounded"
+  (click)="restartGame()"
+>
+  restart
+</button>
+<button
+  class="button bg-green-400 text-white p-3 rounded"
+  (click)="reEnterInput()"
+>
+  re-enter number
+</button>

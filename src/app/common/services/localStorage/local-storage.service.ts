@@ -27,4 +27,8 @@ export class LocalStorageService {
   removeNumber() {
     return localStorage.removeItem('INPUT_NUMBER');
   }
+
+  removePlayer() {
+    return localStorage.removeItem('PLAYER_MOVE');
+  }
 }

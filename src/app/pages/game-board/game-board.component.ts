@@ -1,4 +1,5 @@
 import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Router } from '@angular/router';
 import { TicTacHomeService } from 'src/app/common/services/Home/home.service';
 import { LocalStorageService } from 'src/app/common/services/localStorage/local-storage.service';
 
@@ -21,23 +22,23 @@ export class GameBoardComponent implements OnInit {
   lastColor?: string = 'red';
   activePlayer: string = 'X';
   playerMove: any;
+  resetGame = true;
 
   constructor(
     public localStorageService: LocalStorageService,
-    public ticTacHomeService: TicTacHomeService
+    public ticTacHomeService: TicTacHomeService,
+    private router: Router
   ) {
     this.boardSize = JSON.parse(localStorageService.getNumber() || '');
     this.playerMove = localStorageService.getPlayerMove();
     this.getTwoDimensionArray();
+    console.log(this.twoDimensionalArray);
   }
 
   ngOnInit() {
     let grid: any = document.getElementById('box');
     grid.style = ` grid-template-columns: repeat(${this.boardSize}, minmax(100px, 100px)`;
     grid.style.gridTemplateRows = `repeat(${this.boardSize}, minmax(100px, 100px)`;
-
-    console.log(this.dataclone);
-    console.log(JSON.parse(this.playerMove));
   }
 
   // Get two dimention array
@@ -77,8 +78,17 @@ export class GameBoardComponent implements OnInit {
       }
       this.ticTacHomeService.setPlayerMove(this.dataclone);
     }
-    this.changeBgColor();
   }
 
-  changeBgColor() {}
+  restartGame() {
+    this.localStorageService.removePlayer();
+    window.location.reload();
+  }
+
+  reEnterInput() {
+    this.resetGame = false;
+    this.localStorageService.removePlayer();
+    this.localStorageService.removeNumber();
+    this.router.navigate(['/input']);
+  }
 }
